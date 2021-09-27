@@ -1,3 +1,7 @@
+## [2.0.1+4]
+
+- change paper size width back from 576 to 558
+
 ## [2.0.1+3]
 
 - change paper size width from 372 to 384 and 558 to 576
