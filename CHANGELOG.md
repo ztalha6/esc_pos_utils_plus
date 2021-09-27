@@ -1,3 +1,7 @@
+## [2.0.1+5]
+
+- add paper size mm72 by keep mm80 as 576
+
 ## [2.0.1+4]
 
 - change paper size width back from 576 to 558
