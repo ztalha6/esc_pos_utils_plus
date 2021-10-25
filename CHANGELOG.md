@@ -1,3 +1,7 @@
+## [2.0.1+6]
+
+- pre-cache capabilities
+
 ## [2.0.1+5]
 
 - add paper size mm72 by keep mm80 as 576
