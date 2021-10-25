@@ -10,6 +10,9 @@ import 'dart:convert' show json;
 import 'dart:convert' show utf8;
 import 'package:flutter/services.dart' show rootBundle;
 
+List<Map> printProfiles = [];
+Map printCapabilities = {};
+
 class CodePage {
   CodePage(this.id, this.name);
   int id;
@@ -19,13 +22,40 @@ class CodePage {
 class CapabilityProfile {
   CapabilityProfile._internal(this.name, this.codePages);
 
+  /// [ensureProfileLoaded]
+  /// this method will cache the profile json into data which will
+  /// speed up the next loop and searching profile
+  static Future ensureProfileLoaded({String? path}) async {
+    /// check where this global capabilities is empty then load capabilities.json
+    /// else do nothing
+    if (printCapabilities.isEmpty == true) {
+      final content = await rootBundle.loadString(
+          path ?? 'packages/esc_pos_utils_plus/resources/capabilities.json');
+      var _capabilities = json.decode(content);
+      printCapabilities = Map.from(_capabilities);
+
+      _capabilities['profiles'].forEach((k, v) {
+        printProfiles.add({
+          'key': k,
+          'vendor': v['vendor'] is String ? v['vendor'] : '',
+          'name': v['name'] is String ? v['name'] : '',
+          'description': v['description'] is String ? v['description'] : '',
+        });
+      });
+
+      /// assert that the capabilities will be not empty
+      assert(printCapabilities.isNotEmpty);
+    } else {
+      print("capabilities.length is already loaded");
+    }
+  }
+
   /// Public factory
   static Future<CapabilityProfile> load({String name = 'default'}) async {
-    final content = await rootBundle
-        .loadString('packages/esc_pos_utils_plus/resources/capabilities.json');
-    Map capabilities = json.decode(content);
+    ///
+    await ensureProfileLoaded();
 
-    var profile = capabilities['profiles'][name];
+    var profile = printCapabilities['profiles'][name];
 
     if (profile == null) {
       throw Exception("The CapabilityProfile '$name' does not exist");
@@ -50,25 +80,26 @@ class CapabilityProfile {
 
     return codePages
         .firstWhere((cp) => cp.name == codePage,
+            // ignore: unnecessary_cast
             orElse: (() => throw Exception(
-                "Code Page '$codePage' isn't defined for this profile")) as CodePage Function()?)
+                    "Code Page '$codePage' isn't defined for this profile"))
+                as CodePage Function()?)
         .id;
   }
 
   static Future<List<dynamic>> getAvailableProfiles() async {
-    final content = await rootBundle
-        .loadString('packages/esc_pos_utils_plus/resources/capabilities.json');
-    Map capabilities = json.decode(content);
+    /// ensure the capabilities is not empty
+    await ensureProfileLoaded();
 
-    var profiles = capabilities['profiles'];
+    var _profiles = printCapabilities['profiles'];
 
     List<dynamic> res = [];
 
-    profiles.forEach((k, v) {
+    _profiles.forEach((k, v) {
       res.add({
         'key': k,
         'vendor': v['vendor'] is String ? v['vendor'] : '',
-        'model': v['model'] is String ? v['model'] : '',
+        'name': v['name'] is String ? v['name'] : '',
         'description': v['description'] is String ? v['description'] : '',
       });
     });

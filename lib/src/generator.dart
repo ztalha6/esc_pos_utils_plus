@@ -17,14 +17,16 @@ import 'commands.dart';
 class Generator {
   Generator(this._paperSize, this._profile, {this.spaceBetweenRows = 5});
 
-  // Ticket config
+  /// Ticket config
   final PaperSize _paperSize;
   CapabilityProfile _profile;
   int? _maxCharsPerLine;
-  // Global styles
+
+  /// Global styles
   String? _codeTable;
   PosFontType? _font;
-  // Current styles
+
+  /// Current styles
   PosStyles _styles = PosStyles();
   int spaceBetweenRows;
 
@@ -602,7 +604,9 @@ class Generator {
     // Adjust line spacing (for 16-unit line feeds): ESC 3 0x10 (HEX: 0x1b 0x33 0x10)
     bytes += [27, 51, 16];
     for (int i = 0; i < blobs.length; ++i) {
-      bytes += List.from(header)..addAll(blobs[i])..addAll('\n'.codeUnits);
+      bytes += List.from(header)
+        ..addAll(blobs[i])
+        ..addAll('\n'.codeUnits);
     }
     // Reset line spacing: ESC 2 (HEX: 0x1b 0x32)
     bytes += [27, 50];
