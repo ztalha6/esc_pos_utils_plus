@@ -4,13 +4,13 @@ version: 2.0.1+6
 homepage: https://github.com/andrey-ushakov/esc_pos_utils
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.16.2 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   hex: ^0.2.0
-  image: ^3.0.1
+  image: ^4.0.17
   html: ^0.15.0
 
 dev_dependencies:

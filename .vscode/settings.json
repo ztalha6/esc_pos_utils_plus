@@ -8,5 +8,6 @@
   },
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "dart.flutterSdkPath": "/Users/whitehat/fvm/versions/3.10.0"
 }

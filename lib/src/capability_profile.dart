@@ -34,7 +34,7 @@ class CapabilityProfile {
       var _capabilities = json.decode(content);
       printCapabilities = Map.from(_capabilities);
 
-      _capabilities['profiles'].forEach((k, v) {
+      (_capabilities['profiles'] as Map).forEach((k, v) {
         printProfiles.add({
           'key': k,
           'vendor': v['vendor'] is String ? v['vendor'] : '',
@@ -62,7 +62,7 @@ class CapabilityProfile {
     }
 
     List<CodePage> list = [];
-    profile['codePages'].forEach((k, v) {
+    (profile['codePages'] as Map).forEach((k, v) {
       list.add(CodePage(int.parse(k), v));
     });
 
@@ -74,7 +74,7 @@ class CapabilityProfile {
   List<CodePage> codePages;
 
   int getCodePageId(String? codePage) {
-    if (codePages == null) {
+    if (codePages.isEmpty) {
       throw Exception("The CapabilityProfile isn't initialized");
     }
 
@@ -91,7 +91,7 @@ class CapabilityProfile {
     /// ensure the capabilities is not empty
     await ensureProfileLoaded();
 
-    var _profiles = printCapabilities['profiles'];
+    var _profiles = printCapabilities['profiles'] as Map;
 
     List<dynamic> res = [];
 
