@@ -1,3 +1,7 @@
+## [2.0.2]
+
+- support flutter v 3.10.0
+
 ## [2.0.1+6]
 
 - pre-cache capabilities
