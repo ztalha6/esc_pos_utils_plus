@@ -109,7 +109,7 @@ generator.image(image);
 // Using `GS v 0` (obsolete)
 generator.imageRaster(image);
 // Using `GS ( L`
-generator.imageRaster(image, imageFn: PosImageFn.graphics);
+generator.imageRaster(image);
 ```
 
 ### Print a Barcode:
