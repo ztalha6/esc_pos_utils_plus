@@ -9,9 +9,8 @@
 import 'dart:convert';
 import 'dart:typed_data' show Uint8List;
 import 'package:flutter/services.dart';
-import 'package:hex/hex.dart';
 import 'package:image/image.dart';
-import 'package:esc_pos_utils_plus/esc_pos_utils.dart';
+import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'commands.dart';
 
 class Generator {
