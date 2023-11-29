@@ -1,3 +1,8 @@
+## [2.0.3]
+
+- support flutter v 3.13.0
+
+
 ## [2.0.2]
 
 - support flutter v 3.10.0
