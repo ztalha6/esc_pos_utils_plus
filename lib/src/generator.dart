@@ -1,11 +1,3 @@
-/*
- * esc_pos_utils
- * Created by Andrey U.
- * 
- * Copyright (c) 2019-2020. All rights reserved.
- * See LICENSE for distribution and usage details.
- */
-
 import 'dart:convert';
 import 'dart:typed_data' show Uint8List;
 import 'package:flutter/services.dart';
@@ -575,14 +567,17 @@ class Generator {
   /// Print an image using (ESC *) command
   ///
   /// [image] is an instanse of class from [Image library](https://pub.dev/packages/image)
-  List<int> image(Image imgSrc, {PosAlign align = PosAlign.center}) {
+  List<int> image(
+    Image imgSrc, {
+    PosAlign align = PosAlign.center,
+    bool highDensityHorizontal = true,
+    bool highDensityVertical = true,
+  }) {
     List<int> bytes = [];
     // Image alignment
     bytes += setStyles(PosStyles().copyWith(align: align));
 
     final Image image = Image.from(imgSrc); // make a copy
-    const bool highDensityHorizontal = true;
-    const bool highDensityVertical = true;
 
     invert(image);
     // flip(image, Flip.horizontal);
@@ -591,8 +586,9 @@ class Generator {
     final Image imageRotated =
         copyRotate(image, angle: 270, interpolation: Interpolation.nearest);
 
-    // const int lineHeight = highDensityVertical ? 3 : 1;
-    const int lineHeight = 3;
+    final int lineHeight = highDensityVertical ? 3 : 1;
+
+    /// const int lineHeight = 3;
     final List<List<int>> blobs = _toColumnFormat(imageRotated, lineHeight * 8);
 
     // Compress according to line density
@@ -604,12 +600,17 @@ class Generator {
     }
 
     final int heightPx = imageRotated.height;
-    const int densityByte =
+    final int densityByte =
         (highDensityHorizontal ? 1 : 0) + (highDensityVertical ? 32 : 0);
 
     final List<int> header = List.from(cBitImg.codeUnits);
     header.add(densityByte);
     header.addAll(_intLowHigh(heightPx, 2));
+
+    // Image alignment
+    bytes += latin1.encode(align == PosAlign.left
+        ? cAlignLeft
+        : (align == PosAlign.center ? cAlignCenter : cAlignRight));
 
     // Adjust line spacing (for 16-unit line feeds): ESC 3 0x10 (HEX: 0x1b 0x33 0x10)
     bytes += [27, 51, 16];

@@ -1,11 +1,3 @@
-/*
- * esc_pos_utils
- * Created by Andrey U.
- * 
- * Copyright (c) 2019-2020. All rights reserved.
- * See LICENSE for distribution and usage details.
- */
-
 enum PosAlign { left, center, right }
 enum PosCutMode { full, partial }
 enum PosFontType { fontA, fontB }

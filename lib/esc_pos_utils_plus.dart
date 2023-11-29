@@ -1,12 +1,4 @@
-/*
- * esc_pos_utils
- * Created by Andrey U.
- * 
- * Copyright (c) 2019-2020. All rights reserved.
- * See LICENSE for distribution and usage details.
- */
-
-library esc_pos_utils;
+library esc_pos_utils_plus;
 
 export './gbk_codec/gbk_codec.dart';
 export './dart_hex/hex.dart';
@@ -17,3 +9,4 @@ export './src/pos_column.dart';
 export './src/pos_styles.dart';
 export './src/qrcode.dart';
 export './src/generator.dart';
+export './src/extensions.dart';
