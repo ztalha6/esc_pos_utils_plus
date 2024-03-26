@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data' show Uint8List;
+import 'package:esc_pos_utils_plus_forked/esc_pos_utils_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart';
-import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'commands.dart';
 
 class Generator {

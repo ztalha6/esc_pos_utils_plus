@@ -1,4 +1,4 @@
-library esc_pos_utils_plus;
+library esc_pos_utils_plus_forked;
 
 export './gbk_codec/gbk_codec.dart';
 export './dart_hex/hex.dart';

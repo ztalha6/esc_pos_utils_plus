@@ -1,5 +1,6 @@
-import 'package:esc_pos_utils_plus/src/commands.dart';
 import 'dart:convert';
+
+import 'package:esc_pos_utils_plus_forked/src/commands.dart';
 
 class QRSize {
   const QRSize(this.value);

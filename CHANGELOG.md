@@ -1,7 +1,10 @@
+## [3.0.0]
+
+- Dependencies Updated
+
 ## [2.0.3]
 
 - support flutter v 3.13.0
-
 
 ## [2.0.2]
 

@@ -1,6 +1,5 @@
+import 'package:esc_pos_utils_plus_forked/esc_pos_utils_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 
 void main() {
   test('is capabilities.isEmpty is completed', () {

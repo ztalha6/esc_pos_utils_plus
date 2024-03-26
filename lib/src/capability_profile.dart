@@ -1,4 +1,4 @@
-import 'dart:convert' show json, utf8;
+import 'dart:convert' show json;
 import 'package:flutter/services.dart' show rootBundle;
 
 List<Map> printProfiles = [];
