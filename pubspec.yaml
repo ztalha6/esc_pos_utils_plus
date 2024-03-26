@@ -4,12 +4,12 @@ version: 2.0.3
 homepage: https://github.com/kechankrisna/esc_pos_utils_plus
 
 environment:
-  sdk: '>=2.19.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  image: ^4.0.17
+  image: ^4.1.7
   html: ^0.15.0
 
 dev_dependencies:
