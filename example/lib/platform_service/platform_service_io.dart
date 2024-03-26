@@ -2,7 +2,7 @@
 
 import 'dart:async';
 import 'dart:ffi';
-import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
+import 'package:esc_pos_utils_plus_forked/esc_pos_utils_plus_forked.dart';
 import 'package:flutter/material.dart';
 import 'package:win32/win32.dart';
 import 'package:ffi/ffi.dart';

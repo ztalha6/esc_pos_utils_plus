@@ -20,8 +20,8 @@ class CapabilityProfile {
     /// check where this global capabilities is empty then load capabilities.json
     /// else do nothing
     if (printCapabilities.isEmpty == true) {
-      final content = await rootBundle.loadString(
-          path ?? 'packages/esc_pos_utils_plus/resources/capabilities.json');
+      final content = await rootBundle.loadString(path ??
+          'packages/esc_pos_utils_plus_forked/resources/capabilities.json');
       var _capabilities = json.decode(content);
       printCapabilities = Map.from(_capabilities);
 

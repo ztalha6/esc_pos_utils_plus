@@ -81,13 +81,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
-  esc_pos_utils_plus:
+  esc_pos_utils_plus_forked:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "2.0.3"
+    version: "3.0.0"
   fake_async:
     dependency: transitive
     description:

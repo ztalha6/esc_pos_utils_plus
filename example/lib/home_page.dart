@@ -1,5 +1,5 @@
+import 'package:esc_pos_utils_plus_forked/esc_pos_utils_plus_forked.dart';
 import 'package:example/platform_service/platform_service.dart';
-import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;

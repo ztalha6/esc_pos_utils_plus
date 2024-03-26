@@ -1,3 +1,7 @@
+## [3.1.0]
+
+- Name changed & builds tested
+
 ## [3.0.0]
 
 - Dependencies Updated
