@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:win32/win32.dart';
 import 'package:ffi/ffi.dart';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'platform_service_interface.dart';
 
@@ -135,7 +134,7 @@ class PlatformService extends PlatformServiceInterface {
       socket.destroy();
       return true;
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       return false;
     }
   }

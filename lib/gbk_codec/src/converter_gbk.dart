@@ -2,32 +2,32 @@ import 'dart:convert';
 
 import 'gbk_maps.dart';
 
-gbkCodec gbk = gbkCodec();
+GbkCodec gbk = GbkCodec();
 
-Map<int, String> _gbkCode_to_char = {};
-Map<String, int> _char_to_gbkCode = {};
+Map<int, String> _gbkCodeToChar = {};
+Map<String, int> _charToGbkCode = {};
 
-class gbkCodec extends Encoding {
+class GbkCodec extends Encoding {
   @override
-  Converter<List<int>, String> get decoder => const gbkDecoder();
+  Converter<List<int>, String> get decoder => const GbkDecoder();
 
   @override
-  Converter<String, List<int>> get encoder => const gbkEncoder();
+  Converter<String, List<int>> get encoder => const GbkEncoder();
 
   @override
   String get name => 'gbk';
 
-  gbkCodec() {
+  GbkCodec() {
     //initialize gbk code maps
-    _char_to_gbkCode = json_char_to_gbk;
+    _charToGbkCode = json_char_to_gbk;
     json_gbk_to_char.forEach((sInt, sChar) {
-      _gbkCode_to_char[int.parse(sInt, radix: 16)] = sChar;
+      _gbkCodeToChar[int.parse(sInt, radix: 16)] = sChar;
     });
   }
 }
 
-class gbkEncoder extends Converter<String, List<int>> {
-  const gbkEncoder();
+class GbkEncoder extends Converter<String, List<int>> {
+  const GbkEncoder();
 
   @override
   List<int> convert(String input) {
@@ -39,18 +39,17 @@ List<int> gbkEncode(String input) {
   var ret = <int>[];
   input.codeUnits.forEach((charCode) {
     var char = String.fromCharCode(charCode);
-    var gbkCode = _char_to_gbkCode[char];
+    var gbkCode = _charToGbkCode[char];
     if (gbkCode != null) {
       ret.add(gbkCode);
-    } else if (charCode != null) {
+    } else
       ret.add(charCode);
-    }
   });
   return ret;
 }
 
-class gbkDecoder extends Converter<List<int>, String> {
-  const gbkDecoder();
+class GbkDecoder extends Converter<List<int>, String> {
+  const GbkDecoder();
 
   @override
   String convert(List<int> input) {
@@ -76,7 +75,7 @@ String gbkDecode(List<int> input) {
   }
   */
   input.forEach((charCode) {
-    var char = _gbkCode_to_char[charCode];
+    var char = _gbkCodeToChar[charCode];
     if (char != null) {
       ret += char;
     } else {
